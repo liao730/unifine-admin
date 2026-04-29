@@ -47,7 +47,7 @@
 
                 <el-form-item label="封面图片">
                   <el-upload
-                    action="/api/upload/image"
+                    action="/altra/api/upload/image"
                     :data="{ folder: 'cases/list' }"
                     name="file"
                     list-type="picture-card"
@@ -83,7 +83,7 @@
                     <el-col :span="8">
                       <el-form-item label="配图">
                         <el-upload
-                          action="/api/upload/image"
+                          action="/altra/api/upload/image"
                           :data="{ folder: 'cases/detail' }"
                           name="file"
                           :show-file-list="false"
@@ -195,7 +195,7 @@ const onSubmit = async () => {
   delete submitData.sections;
 
   try {
-    const res = await axios.post('/api/cases/add', submitData);
+    const res = await axios.post('/altra/api/cases/add', submitData);
     if (res.data.code === 200) {
       ElMessage.success('案例保存成功！');
     }

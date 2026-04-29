@@ -44,7 +44,7 @@
 
                 <el-form-item label="封面图片">
                   <el-upload
-                    action="/api/upload/image"
+                    action="/altra/api/upload/image"
                     :data="{ folder: 'news/covers' }"
                     name="file"
                     list-type="picture-card"
@@ -118,7 +118,7 @@ const onSubmit = async () => {
     return
   }
   try {
-    const res = await axios.post('/api/news/add', form)
+    const res = await axios.post('/altra/api/news/add', form)
     if (res.data.code === 200) {
       ElMessage.success('新闻发布成功！')
     }

@@ -49,10 +49,16 @@
     <el-option label="Peptide Series" value="peptide" />
   </el-select>
 </el-form-item>
+<el-form-item label="来源">
+  <el-select v-model="form.origin" placeholder="选择来源">
+    <el-option label="altra" value="altra" />
+    <el-option label="unfine" value="unfine" />
+  </el-select>
+</el-form-item>
 
                 <el-form-item label="封面图片">
                   <el-upload
-                    action="/api/upload/image"
+                    action="/altra/api/upload/image"
                     :data="{ folder: 'products/list' }"
                     name="file"
                     list-type="picture-card"
@@ -88,7 +94,7 @@
                     <el-col :span="8">
                       <el-form-item label="配图">
                         <el-upload
-                          action="/api/upload/image"
+                          action="/altra/api/upload/image"
                           :data="{ folder: 'products/detail' }"
                           name="file"
                           :show-file-list="false"
@@ -139,6 +145,7 @@ const form = reactive({
   coverImage: '', 
   summary: '',
   category: 'Marine Oil',
+  origin: '',
   isPublished: 1,
   sortOrder: 0,
   sections: [
@@ -171,6 +178,7 @@ const resetForm = () => {
   form.name = ''
   form.coverImage = ''
   form.summary = ''
+  form.origin = ''
   form.category = 'Marine Oil'
   form.isPublished = 1
   form.sortOrder = 0
@@ -209,7 +217,7 @@ const onSubmit = async () => {
   delete submitData.sections;
 
   try {
-    const res = await axios.post('/api/products/add', submitData);
+    const res = await axios.post('/altra/api/products/add', submitData);
     if (res.data.code === 200) {
       ElMessage.success('产品保存成功！');
     }
